@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/test', function(){
+	
+	// factory(App\Models\Post::class, 30)->create();
+
+	// factory(App\Models\User::class, 30)->create();
+});
