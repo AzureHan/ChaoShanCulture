@@ -16,4 +16,6 @@ Route::group([
 
     $router->resource('posts', PostController::class);
 
+    $router->resource('categories', CategoriesController::class);
+
 });
