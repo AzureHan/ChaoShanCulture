@@ -55,6 +55,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'onetimes' => [
+            'driver' => 'local',
+            'root' => storage_path('app/onetimes'),
+            'url' => env('APP_URL').'/onetimes',
+            'visibility' => 'public',
+        ],
+
         'admin' => [
             'driver' => 'local',
             'root' => public_path('backend'),

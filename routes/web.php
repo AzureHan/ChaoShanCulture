@@ -19,9 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/test', function(){
+Route::get('/test', function() {
 	
 	// factory(App\Models\Post::class, 30)->create();
 
 	// factory(App\Models\User::class, 30)->create();
+});
+
+Route::prefix('/onetimes')
+->namespace('Onetimes')
+->group(function() {
+
+	Route::get('/create-posts-import-job', 'CreatePostsImportJob@index')->name('create-posts-import-job');
+
 });

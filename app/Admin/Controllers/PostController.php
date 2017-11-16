@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -56,6 +57,7 @@ class PostController extends Controller
 
             $grid->column('poster.name', '发布者');
             $grid->column('title', '标题');
+            $grid->column('category.title', '分类');
             $grid->column('published', '用户可见')->display(function($published) {
                 return $published ? '显示' : '隐藏';
             });
@@ -74,6 +76,7 @@ class PostController extends Controller
             $form->display('poster.name', '发布者');
             $form->text('title', '标题');
             $form->textarea('body', '内容');
+            $form->select('category_id', '分类')->options(Category::selectOptions());
             $form->switch('published', '用户可见');
 
             $form->display('updated_at', '更新时间');
@@ -89,6 +92,9 @@ class PostController extends Controller
 
             $form->text('title', '标题');
             $form->textarea('body', '内容');
+            $categoriesOptions = Category::selectOptions();
+            array_shift($categoriesOptions);
+            $form->select('category_id', '分类')->options($categoriesOptions);
             $form->switch('published', '用户可见');
 
             $form->ignore(['poster_name']);

@@ -17,6 +17,11 @@ class Post extends Model
 
     public function poster()
     {
-    	return $this->belongsTo('Encore\Admin\Auth\Database\Administrator', 'poster_id', 'id');
+        return $this->belongsTo('Encore\Admin\Auth\Database\Administrator', 'poster_id', 'id');
+    }
+
+    public function category()
+    {
+    	return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
 }
