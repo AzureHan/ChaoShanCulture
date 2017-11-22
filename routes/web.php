@@ -11,20 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('index');
 
-Route::get('/test', function() {
+// Route::get('/test', function() {
 	
 	// factory(App\Models\Post::class, 30)->create();
 
 	// factory(App\Models\User::class, 30)->create();
-});
+
+// });
 
 Route::prefix('/onetimes')
 ->namespace('Onetimes')
