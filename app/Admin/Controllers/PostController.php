@@ -75,7 +75,7 @@ class PostController extends Controller
 
             $form->display('poster.name', '发布者');
             $form->text('title', '标题');
-            $form->textarea('body', '内容');
+            $form->editor('body', '内容');
             $form->select('category_id', '分类')->options(Category::selectOptions());
             $form->switch('published', '用户可见');
 
@@ -91,7 +91,7 @@ class PostController extends Controller
             $form->display('poster_name', '发布者')->value(Auth('admin')->user()->name);
 
             $form->text('title', '标题');
-            $form->textarea('body', '内容');
+            $form->editor('body', '内容');
             $categoriesOptions = Category::selectOptions();
             array_shift($categoriesOptions);
             $form->select('category_id', '分类')->options($categoriesOptions);

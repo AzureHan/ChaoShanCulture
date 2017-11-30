@@ -12,6 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
 use App\Models\Post;
+use App\Models\PostImage;
 
 const POSTS_TABLE_NAME = 'posts';
 const OLD_POSTS_TABLE_NAME = 'cosa_document';
@@ -49,7 +50,12 @@ class ImportPostFromOldProject implements ShouldQueue
         $content = Storage::disk('onetimes')
         ->get('import_documents/'. $path);
 
-        preg_match_all("|<img src=\"/Upload/image/(.*?)/(\d*?).(\w*?)\">|", $content, $images, PREG_SET_ORDER);
+        preg_match_all(
+            "|<img src=\"/Upload/image/(.*?)/(\d*?).(\w*?)\">|"
+            , $content
+            , $images
+            , PREG_SET_ORDER
+        );
 
         foreach($images as $image) {
             $oldPath = $image[1] . '/' . $image[2] . '.' . $image[3];
@@ -67,11 +73,22 @@ class ImportPostFromOldProject implements ShouldQueue
                     asset('/storage/posts/images/'.$newPath),
                     $content
                 );
+
+                PostImage::create([
+                    'post_id' => $this->post->id,
+                    'uri' => $newPath,
+                    'image_size' => filesize(
+                        public_path('storage/posts/images/'.$newPath)
+                    ),
+                    'image_type' => pathinfo(
+                        public_path('storage/posts/images/'.$newPath)
+                        , PATHINFO_EXTENSION
+                    ),
+                ]);
             }
         }
 
-        $this->post
-        ->update([
+        $this->post->update([
             'body' => $content,
         ]);
     }

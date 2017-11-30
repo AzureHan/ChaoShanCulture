@@ -1,0 +1,18 @@
+#categories-posts > hr {
+	border-color: #c5c5c5;
+}
+
+.post-item > div {
+	height: 150px;
+	margin-bottom: 15px;
+}
+
+.post-cover {
+	height: 150px;
+	overflow: hidden;
+}
+
+.post-title {
+	font-size: 18px;
+	font-weight: 600;
+}

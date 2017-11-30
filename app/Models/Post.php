@@ -24,4 +24,9 @@ class Post extends Model
     {
     	return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
+
+    public function images()
+    {
+        return $this->hasMany('App\Models\PostImage', 'post_id', 'id');
+    }
 }

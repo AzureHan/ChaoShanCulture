@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Post;
 use App\Models\Category;
@@ -33,11 +35,28 @@ class HomeController extends Controller
         ->transform(function($category) {
             $category->posts = 
             Post::whereIn( 'category_id',
-                $category->getChildren(true, false))
-            ->select('id','category_id','title')
+                $category->getChildren(true, true))
+            ->select('id','created_at','category_id','title',DB::raw('left(`body`, 281) as body'))
+            ->with([
+                'images',
+                'category',
+            ])
+            ->withCount('images')
             ->orderByDesc('updated_at')
             ->take(5)
-            ->get();
+            ->get()
+            ->transform(function($post) {
+                $post->body = strlen($post->body > 280) ? 
+                strip_tags($post->body) :
+                strip_tags($post->body) . ' ...' ;
+
+                $post->create_date = date(
+                    'Y 年 m 月 d日',
+                    strtotime($post->created_at)
+                );
+
+                return $post;
+            });
 
             return $category;
         });

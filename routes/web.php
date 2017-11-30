@@ -15,6 +15,12 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
 
+Route::prefix('/p')->group(function() {
+
+	Route::get('/{id}', 'PostsController@show');
+
+});
+
 // Route::get('/test', function() {
 	
 	// factory(App\Models\Post::class, 30)->create();
@@ -23,9 +29,7 @@ Route::get('/', 'HomeController@index')->name('index');
 
 // });
 
-Route::prefix('/onetimes')
-->namespace('Onetimes')
-->group(function() {
+Route::prefix('/onetimes')->namespace('Onetimes')->group(function() {
 
 	Route::get('/create-posts-import-job', 'CreatePostsImportJob@index')->name('create-posts-import-job');
 
