@@ -36,7 +36,7 @@ class HomeController extends Controller
             $category->posts = 
             Post::whereIn( 'category_id',
                 $category->getChildren(true, true))
-            ->select('id','created_at','category_id','title',DB::raw('left(`body`, 281) as body'))
+            ->select('id','created_at','category_id','title','body_short')
             ->with([
                 'images',
                 'category',
@@ -46,9 +46,6 @@ class HomeController extends Controller
             ->take(5)
             ->get()
             ->transform(function($post) {
-                $post->body = strlen($post->body > 280) ? 
-                strip_tags($post->body) :
-                strip_tags($post->body) . ' ...' ;
 
                 $post->create_date = date(
                     'Y 年 m 月 d日',

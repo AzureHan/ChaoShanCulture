@@ -5,17 +5,17 @@ return [
     /*
      * Laravel-admin name.
      */
-    'name'      => 'Laravel-admin',
+    'name'      => '潮汕文化 - 后台',
 
     /*
      * Logo in admin panel header.
      */
-    'logo'      => '<b>Laravel</b> admin',
+    'logo'      => '<b>潮汕</b> 文化',
 
     /*
      * Mini-logo in admin panel header.
      */
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>潮汕</b>',
 
     /*
      * Route configration.
@@ -129,7 +129,7 @@ return [
     /*
      * @see https://adminlte.io/docs/2.4/layout
      */
-    'skin'    => 'skin-blue-light',
+    'skin'    => 'skin-yellow-light',
 
     /*
     |---------------------------------------------------------|

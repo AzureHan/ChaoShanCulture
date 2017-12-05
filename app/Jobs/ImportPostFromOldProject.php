@@ -16,6 +16,7 @@ use App\Models\PostImage;
 
 const POSTS_TABLE_NAME = 'posts';
 const OLD_POSTS_TABLE_NAME = 'cosa_document';
+const POSTS_BODY_SHORT_LONG = 240;
 
 class ImportPostFromOldProject implements ShouldQueue
 {
@@ -88,8 +89,17 @@ class ImportPostFromOldProject implements ShouldQueue
             }
         }
 
+        $short = html_entity_decode(mb_substr(
+            strip_tags($content),
+            0,
+            POSTS_BODY_SHORT_LONG + 1
+        ));
+        $short = strlen($short) > POSTS_BODY_SHORT_LONG
+        ? $short . ' ...' : $short;
+
         $this->post->update([
             'body' => $content,
+            'body_short' => $short,
         ]);
     }
 }

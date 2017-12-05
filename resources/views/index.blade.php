@@ -16,7 +16,7 @@
         <div class="row">
           @foreach($category->posts->take(5) as $post)
             <div class="post-item">
-              <div class="{{ $post->images_count > 0 ? 'col-md-9' : 'col-md-12' }}">
+              <div class="post-title col-md-12">
                 <p>
                   <span class="label label-primary"> {{ $post->category->title }} </span>
                   <a href="{{ URL('/p/' . $post->id) }}" class="btn btn-simple post-title"> {{ $post->title }} </a>
@@ -25,13 +25,15 @@
                   <i class="fa fa-calendar"></i>
                   <small> {{ $post->create_date }} </small>
                 </p>
+              </div>
+              <div class="post-short {{ $post->images_count > 0 ? 'col-xs-9' : 'col-xs-12' }}">
                 <p class="hidden-xs">
-                  <span class="btn-simple"> {{ $post->body }} </span>
+                  <span class="btn-simple"> {{ $post->body_short }} </span>
                 </p>
               </div>
               @if($post->images_count > 0)
-              <div class="col-md-3">
-                <div class="post-cover img-rounded img-responsive">
+              <div class="post-image col-xs-3">
+                <div class="post-cover hidden-xs img-rounded img-responsive">
                   <img class="img-responsive" alt="{{ $post->title }}"
                     src="{{ asset('storage/posts/images/'.$post->images->first()->uri) }}">
                 </div>
