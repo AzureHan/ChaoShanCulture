@@ -18,4 +18,6 @@ Route::group([
 
     $router->resource('categories', CategoriesController::class);
 
+    $router->resource('videos', VideoController::class);
+
 });

@@ -19,7 +19,10 @@
               <div class="post-title col-md-12">
                 <p>
                   <span class="label label-primary"> {{ $post->category->title }} </span>
-                  <a href="{{ URL('/p/' . $post->id) }}" class="btn btn-simple post-title"> {{ $post->title }} </a>
+                  <a href="{{ route('posts.show',['id'=>$post->id]) }}"
+                   title="{{ $post->title }}"
+                   class="btn btn-simple"
+                   > {{ $post->title }} </a>
                 </p>
                 <p class="hidden-xs">
                   <i class="fa fa-calendar"></i>
@@ -28,7 +31,7 @@
               </div>
               <div class="post-short {{ $post->images_count > 0 ? 'col-xs-9' : 'col-xs-12' }}">
                 <p class="hidden-xs">
-                  <span class="btn-simple"> {{ $post->body_short }} </span>
+                  {{ $post->body_short }}
                 </p>
               </div>
               @if($post->images_count > 0)

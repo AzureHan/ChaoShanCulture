@@ -4,6 +4,8 @@ namespace App\Models;
 
 use DB;
 
+use App\Models\Category;
+
 trait CategoryDiv
 {
 	/**
@@ -91,6 +93,14 @@ trait CategoryDiv
 		});
 	}
 
+	/**
+	 * Query root categories
+	 */
+	public static function roots() 
+	{
+		return Category::where(self::$divPrt, 0);
+	}
+
 	public function getChildren($andSelf = true, $idWonder = false)
 	{
 		$categoriesId = DB::table(self::$divTable)
@@ -113,6 +123,5 @@ trait CategoryDiv
 		} else {
 			return ('\\'.self::$divModel)::find($categoriesId);
 		}
-
 	}
 }

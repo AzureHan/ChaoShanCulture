@@ -1,8 +1,22 @@
+.logo-container .brand {
+    width: auto;
+}
+
+body > nav {
+	background-color: #68b3c8;
+}
+
+body > nav .navbar-nav > li > a.btn {
+	color: #fff!important;
+}
+
+/* Index Page Start */
+
 #categories-posts > hr {
 	border-color: #c5c5c5;
 }
 
-.post-item > div {
+.post-item {
 	/*height: 150px;*/
 	margin-bottom: 15px;
 }
@@ -15,4 +29,32 @@
 .post-title {
 	font-size: 18px;
 	font-weight: 600;
+	overflow: hidden;
 }
+
+.post-title > p {
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+.post-title > p > span {
+	margin-right: 5px;
+}
+
+.post-title > p > a {
+	margin: 0;
+	padding: 0;
+}
+
+.post-short > p{
+    font-size: 14px;
+}
+
+/* Index Page End */
+
+/* Categories Index Page Start */
+#categories-index .acc-content-inner > a {
+	margin-bottom: 5px;
+}
+/* Categories Index Page End */

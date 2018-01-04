@@ -11,14 +11,20 @@
     <meta name="viewport" content="width=device-width" />
     
     <link href="{{asset('paperkit/bootstrap3/css/bootstrap.css')}}" rel="stylesheet" />
+
+    <!-- Plugins CSS  -->
     <link href="{{asset('paperkit/assets/css/ct-pap')}}er.css" rel="stylesheet"/>
-    <link href="{{asset('paperkit/assets/css/demo.css')}}" rel="stylesheet" /> 
-    <link href="{{asset('css/home.css')}}" rel="stylesheet" /> 
-        
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="{{asset('paperkit/assets/css/demo.css')}}" rel="stylesheet" />
+    @yield('plugins_css')
+
+    <!-- Level CSS -->
+    <link href="{{asset('css/home.css')}}" rel="stylesheet" />
+    @yield('level_css')
+
+    <!-- Fonts and icons -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'> -->
       
 </head>
 <nav class="navbar navbar-ct-transparent" role="navigation-demo" id="demo-navbar">
@@ -31,13 +37,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="http://www.creative-tim.com">
+      <a href="{{ route('index') }}">
            <div class="logo-container">
                 <div class="logo">
                     <img src="{{asset('paperkit/assets/paper_img/new_logo.png')}}" alt="Creative Tim Logo">
                 </div>
                 <div class="brand">
-                    Creative Tim
+                    潮汕<br>文化研究
                 </div>
             </div>
       </a>
@@ -47,7 +53,10 @@
     <div class="collapse navbar-collapse" id="navigation-example-2">
       <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="#" class="btn btn-danger btn-simple"> 目录 </a>
+            <a href="{{ route('categories.index') }}" class="btn btn-danger btn-simple"> 目录 </a>
+          </li>
+          <li>
+            <a href="{{ route('videos.index') }}" class="btn btn-danger btn-simple"> 视频 </a>
           </li>
        </ul>
     </div><!-- /.navbar-collapse -->
@@ -90,16 +99,21 @@
 </div>
 
 </body>
-  <script src="{{asset('paperkit/assets/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
-	<script src="{{asset('paperkit/assets/js/jquery-ui-1.10.4.custom.min.js')}}" type="text/javascript"></script>
 
-	<script src="{{asset('paperkit/bootstrap3/js/bootstrap.js')}}" type="text/javascript"></script>
-	
-	<!--  Plugins -->
-	<script src="{{asset('paperkit/assets/js/ct-paper-checkbox.js')}}"></script>
-	<script src="{{asset('paperkit/assets/js/ct-paper-radio.js')}}"></script>
-	<script src="{{asset('paperkit/assets/js/bootstrap-select.js')}}"></script>
-	<script src="{{asset('paperkit/assets/js/bootstrap-datepicker.js')}}"></script>
-	
-	<script src="{{asset('paperkit/assets/js/ct-paper.js')}}"></script>    
+  <!--  Core JS -->
+  <script src="{{asset('paperkit/assets/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
+  <script src="{{asset('paperkit/assets/js/jquery-ui-1.10.4.custom.min.js')}}" type="text/javascript"></script>
+  <script src="{{asset('paperkit/bootstrap3/js/bootstrap.js')}}" type="text/javascript"></script>
+  
+  <!--  Plugins JS -->
+  <script src="{{asset('paperkit/assets/js/ct-paper-checkbox.js')}}"></script>
+  <script src="{{asset('paperkit/assets/js/ct-paper-radio.js')}}"></script>
+  <script src="{{asset('paperkit/assets/js/bootstrap-select.js')}}"></script>
+  <script src="{{asset('paperkit/assets/js/bootstrap-datepicker.js')}}"></script>
+  @yield('plugins_js')
+  
+  <!--  Level JS -->
+  <script src="{{asset('paperkit/assets/js/ct-paper.js')}}"></script>
+  @yield('level_js')
+
 </html>

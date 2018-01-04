@@ -23,6 +23,7 @@ class Category extends Model
 
     static $divModel = 'App\Models\Category';
     static $divTable = "categories";
+    static $divPrt = "parent_id";
     static $divLeft = "left";
     static $divRight = "right";
     static $divDepth = "depth";
